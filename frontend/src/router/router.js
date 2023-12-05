@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import dutiesView from "../views/dutiesView.vue";
+import iframeView from "../views/iframeView.vue";
 import vueApp from "../vueApp.vue";
 
 const router = createRouter({
@@ -13,6 +14,11 @@ const router = createRouter({
           path: "duties",
           name: "Duties",
           component: dutiesView,
+        },
+        {
+          path: "iframe",
+          name: "Iframes",
+          component: iframeView,
         },
       ],
     },
