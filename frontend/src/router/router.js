@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import dutiesView from "../views/dutiesView.vue";
-import iframeView from "../views/iframeView.vue";
+import navigationView from "../views/navigationView.vue";
 import vueApp from "../vueApp.vue";
 
 const router = createRouter({
@@ -11,14 +11,14 @@ const router = createRouter({
       component: vueApp,
       children: [
         {
+          path: "",
+          name: "Home",
+          component: navigationView,
+        },
+        {
           path: "duties",
           name: "Duties",
           component: dutiesView,
-        },
-        {
-          path: "iframe",
-          name: "Iframes",
-          component: iframeView,
         },
       ],
     },
@@ -26,7 +26,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = "Parkour LIMS | " + to.name;
+  if (to && to.name !== "Home") document.title = "Parkour LIMS | " + to.name;
   next();
 });
 

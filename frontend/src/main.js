@@ -12,6 +12,20 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faChalkboardUser,
   faMagnifyingGlass,
+  faFileText,
+  faFlask,
+  faArrowDown,
+  faSortAmountDesc,
+  faLevelDown,
+  faPieChart,
+  faLineChart,
+  faCog,
+  faBook,
+  faCalendar,
+  faSignOut,
+  faCogs,
+  faTable,
+  faEur,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faCalendarPlus,
@@ -25,6 +39,20 @@ library.add(
   faMagnifyingGlass,
   faCalendarPlus,
   faCalendarDays,
+  faFileText,
+  faFlask,
+  faArrowDown,
+  faCogs,
+  faTable,
+  faSortAmountDesc,
+  faLevelDown,
+  faEur,
+  faPieChart,
+  faLineChart,
+  faCog,
+  faBook,
+  faCalendar,
+  faSignOut
 );
 
 app.use(router);

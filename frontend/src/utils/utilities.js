@@ -27,7 +27,7 @@ export function handleError(error) {
   } else if (error.request) {
     showNotification(
       "No response received. The request may have timed out.",
-      "error",
+      "error"
     );
     console.log("No response received. The request may have timed out.");
   } else {
