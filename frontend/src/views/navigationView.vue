@@ -1,42 +1,64 @@
 <template>
-  <div>
+  <div style="height: 100vh; display: flex; flex-direction: column">
     <div
+      class="bg-color-beige"
       id="header"
       style="
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex: 0 0 auto;
         border: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       "
     >
-      <div style="height: 120px; background: #1bace6; width: 290px">
+      <div
+        class="bg-color-mpg-green color-white"
+        style="height: 80px; width: 290px; padding: 10px"
+      >
         <font-awesome-icon
-          style="font-size: 28px"
-          icon="fa-solid fa-chalkboard-user"
+          style="font-size: 20px"
+          icon="fa-solid fa-dna"
           size="xl"
         />
         <span
           class="text-large"
-          style="font-size: 20px; font-weight: bold; margin-left: 5px"
+          style="font-size: 18px; font-weight: bold; margin-left: 5px"
         >
-          Parkour LIMS</span
-        >
+          Parkour LIMS
+        </span>
       </div>
-      <div style="height: 120px; background: #eeeeee; flex: 1"></div>
+      <div style="display: flex; align-items: center">
+        <div class="color-bluish-grey" style="font-weight: bold;">Saurabh Dome</div>
+
+        <ul class="list-style-none" style="display: flex; margin-left: 10px">
+          <li
+            v-for="item in headerItems"
+            :key="item.id"
+            style="margin-right: 15px"
+          >
+            <div>
+              <font-awesome-icon class="color-bluish-grey" style="font-size: 20px" :icon="item.icon" />
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between">
-      <div id="navigation-bar">
+    <div style="flex: 1 1 auto; display: flex">
+      <div class="bg-color-beige" id="navigation-bar" style="flex: 0 0 290px">
         <ul class="list-style-none">
           <li v-for="item in navigationItems" :id="item.id">
-            <div style="height: 60px; background: #1bace6; width: 290px">
+            <div
+              class="bg-color-beige color-bluish-grey"
+              style="height: 50px; width: 290px; padding: 16px"
+            >
               <font-awesome-icon
-                style="font-size: 28px"
+                style="font-size: 18px"
                 :icon="item.icon"
                 size="xl"
               />
               <span
                 class="text-large"
-                style="font-size: 20px; font-weight: bold; margin-left: 5px"
+                style="font-size: 15px; font-weight: bold; margin-left: 5px"
               >
                 {{ item.name }}</span
               >
@@ -44,15 +66,14 @@
           </li>
         </ul>
       </div>
-      <div style="background: #eeeeee; flex: 1">
-        <div class="navigation-page">
+      <div style="flex: 1 1 auto; background: #eeeeee">
+        <div class="navigation-page" style="height: 100%; display: flex">
           <iframe
             src="http://localhost:9980/#requests"
-            height="iframeHeight"
-            scrolling="iframeScrollable"
+            scrolling="no"
             frameborder="0"
-            style="width: 1200px; height: 600px"
-          />
+            style="width: 100%; border: none"
+          ></iframe>
         </div>
       </div>
     </div>

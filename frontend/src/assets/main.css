@@ -15,6 +15,14 @@
   font-size: 14px !important;
 }
 
+.color-white {
+  color: #ffffff !important;
+}
+
+.bg-color-white {
+  background-color: #ffffff !important;
+}
+
 .color-mpg-green {
   color: #006c66 !important;
 }
