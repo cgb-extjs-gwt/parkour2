@@ -5,51 +5,116 @@
       id="header"
       style="
         flex: 0 0 auto;
-        border: 1px solid black;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        filter: drop-shadow(0.05rem 0.05rem 0.125rem #4b484880);
       "
     >
-      <div
-        class="bg-color-mpg-green color-white"
-        style="height: 80px; width: 290px; padding: 10px"
-      >
-        <font-awesome-icon
-          style="font-size: 20px"
-          icon="fa-solid fa-dna"
-          size="xl"
-        />
-        <span
-          class="text-large"
-          style="font-size: 18px; font-weight: bold; margin-left: 5px"
+      <div style="display: flex; align-items: center">
+        <div
+          class="bg-color-mpg-green color-white"
+          style="
+            overflow: hidden;
+            width: 290px;
+            height: 70px;
+            padding: 10px;
+            transition: width 0.3s ease-in-out;
+          "
+          :style="{ width: collapseNavigation ? '75px' : '290px' }"
         >
-          Parkour LIMS
-        </span>
+          <font-awesome-icon
+            style="font-size: 20px"
+            icon="fa-solid fa-dna"
+            size="xl"
+          />
+          <span
+            :class="{
+              'display-none': collapseNavigation,
+              'text-large': !collapseNavigation,
+            }"
+            style="
+              font-size: 18px;
+              font-weight: bold;
+              margin-left: 5px;
+              overflow: hidden;
+            "
+          >
+            Parkour LIMS
+          </span>
+        </div>
+        <div
+          class="color-bluish-grey cursor-pointer"
+          style="font-size: 16px; margin-left: 20px"
+          @click="toggleCollapse"
+        >
+          <font-awesome-icon
+            icon="fa-solid fa-navicon"
+            class="color-bluish-grey cursor-pointer"
+            style="font-size: 16px"
+          />
+        </div>
       </div>
       <div style="display: flex; align-items: center">
-        <div class="color-bluish-grey" style="font-weight: bold;">Saurabh Dome</div>
+        <div
+          class="color-bluish-grey"
+          style="font-weight: bold; font-size: 14px"
+        >
+          Saurabh Dome
+        </div>
 
-        <ul class="list-style-none" style="display: flex; margin-left: 10px">
+        <ul class="list-style-none" style="display: flex; margin-left: 20px">
           <li
             v-for="item in headerItems"
             :key="item.id"
-            style="margin-right: 15px"
+            style="margin-right: 18px"
           >
             <div>
-              <font-awesome-icon class="color-bluish-grey" style="font-size: 20px" :icon="item.icon" />
+              <a :href="item.url" target="_blank">
+                <font-awesome-icon
+                  class="color-bluish-grey cursor-pointer"
+                  style="font-size: 16px"
+                  :icon="item.icon"
+                />
+              </a>
             </div>
           </li>
         </ul>
       </div>
     </div>
     <div style="flex: 1 1 auto; display: flex">
-      <div class="bg-color-beige" id="navigation-bar" style="flex: 0 0 290px">
+      <div
+        class="bg-color-beige"
+        id="navigation-bar"
+        style="
+          flex: 0 0 auto;
+          overflow: hidden;
+          width: 290px;
+          transition: width 0.3s ease-in-out;
+        "
+        :style="{ width: collapseNavigation ? '75px' : '290px' }"
+      >
         <ul class="list-style-none">
-          <li v-for="item in navigationItems" :id="item.id">
+          <li
+            v-for="item in navigationItems"
+            :key="item.id"
+            :id="item.id"
+            @click="changeNavigation(item)"
+            class="navigation-hover-item"
+            :class="{
+              'navigation-selected-item': currentNavigation === item.url,
+            }"
+          >
             <div
               class="bg-color-beige color-bluish-grey"
-              style="height: 50px; width: 290px; padding: 16px"
+              style="
+                height: 60px;
+                width: 290px;
+                padding: 0 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
             >
               <font-awesome-icon
                 style="font-size: 18px"
@@ -59,9 +124,10 @@
               <span
                 class="text-large"
                 style="font-size: 15px; font-weight: bold; margin-left: 5px"
+                v-if="!collapseNavigation"
               >
-                {{ item.name }}</span
-              >
+                {{ item.name }}
+              </span>
             </div>
           </li>
         </ul>
@@ -69,7 +135,7 @@
       <div style="flex: 1 1 auto; background: #eeeeee">
         <div class="navigation-page" style="height: 100%; display: flex">
           <iframe
-            src="http://localhost:9980/#requests"
+            :src="'http://localhost:9980/' + currentNavigation"
             scrolling="no"
             frameborder="0"
             style="width: 100%; border: none"
@@ -83,6 +149,8 @@
 export default {
   data() {
     return {
+      collapseNavigation: false,
+      currentNavigation: "#requests",
       userData: {},
       navigationItems: [
         {
@@ -191,6 +259,14 @@ export default {
         { id: "logout", name: "Logout", icon: "fa-sign-out", url: "logout" },
       ],
     };
+  },
+  methods: {
+    toggleCollapse() {
+      this.collapseNavigation = !this.collapseNavigation;
+    },
+    changeNavigation(item) {
+      this.currentNavigation = item.url;
+    },
   },
 };
 </script>

@@ -47,6 +47,10 @@
   background-color: #ecebe5 !important;
 }
 
+.cursor-pointer:hover {
+  cursor: pointer;
+}
+
 .display-none {
   display: none !important;
 }

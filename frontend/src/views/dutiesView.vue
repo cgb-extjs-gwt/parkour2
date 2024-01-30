@@ -255,7 +255,7 @@
         </div>
       </div>
       <button
-        class="text-medium save-button"
+        class="text-medium save-button cursor-pointer"
         style="margin: 15px"
         @click="saveDuty()"
       >
@@ -788,10 +788,6 @@ export default {
   outline: none;
   color: white;
   padding: 6px 10px;
-}
-
-.save-button:hover {
-  cursor: pointer;
 }
 
 select:disabled {

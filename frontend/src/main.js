@@ -27,6 +27,7 @@ import {
   faTable,
   faEur,
   faDna,
+  faNavicon,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faCalendarPlus,
@@ -54,7 +55,8 @@ library.add(
   faBook,
   faCalendar,
   faSignOut,
-  faDna
+  faDna,
+  faNavicon
 );
 
 app.use(router);
