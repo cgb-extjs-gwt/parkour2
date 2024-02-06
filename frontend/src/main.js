@@ -2,12 +2,14 @@ import "./assets/main.css";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "vue-toastification/dist/index.css";
+import "floating-vue/dist/style.css";
 
 import { createApp } from "vue";
 import vueApp from "./vueApp.vue";
 import router from "./router/router.js";
 import toast from "vue-toastification";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import floatingVue from "floating-vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faChalkboardUser,
@@ -61,6 +63,7 @@ library.add(
 
 app.use(router);
 app.use(toast);
+app.use(floatingVue);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.config.productionTip = false;
 app.mount("#app");

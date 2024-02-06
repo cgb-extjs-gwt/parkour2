@@ -52,27 +52,39 @@
             icon="fa-solid fa-navicon"
             class="color-bluish-grey cursor-pointer"
             style="font-size: 16px"
+            v-tooltip="
+              collapseNavigation
+                ? 'Expand Navigation Bar'
+                : 'Collapse Navigation Bar'
+            "
           />
         </div>
       </div>
       <div style="display: flex; align-items: center">
         <div
           class="color-bluish-grey"
-          style="font-weight: bold; font-size: 14px"
+          style="font-weight: bold; font-size: 14px; margin-right: 18px"
         >
           Saurabh Dome
         </div>
+        <div
+          class="cursor-default"
+          style="color: #29485d50; font-weight: 500; margin-right: 18px"
+        >
+          |
+        </div>
 
-        <ul class="list-style-none" style="display: flex; margin-left: 20px">
+        <ul class="list-style-none" style="display: flex">
           <li
             v-for="item in headerItems"
             :key="item.id"
             style="margin-right: 18px"
+            v-tooltip="item.name"
           >
             <div>
-              <a :href="item.url" target="_blank">
+              <a class="no-focus-highlight" :href="item.url" target="_blank">
                 <font-awesome-icon
-                  class="color-bluish-grey cursor-pointer"
+                  class="color-bluish-grey"
                   style="font-size: 16px"
                   :icon="item.icon"
                 />
@@ -113,7 +125,7 @@
                 padding: 0 16px;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: flex-start;
               "
             >
               <font-awesome-icon
@@ -123,7 +135,7 @@
               />
               <span
                 class="text-large"
-                style="font-size: 15px; font-weight: bold; margin-left: 5px"
+                style="font-size: 15px; font-weight: bold; margin-left: 20px"
                 v-if="!collapseNavigation"
               >
                 {{ item.name }}
